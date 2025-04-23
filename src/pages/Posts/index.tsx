@@ -6,8 +6,9 @@ import { PostsContext } from "../../contexts/PostsContext";
 
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { Link } from "react-router";
 
-export function Posts() {
+export function PostsPage() {
   const { posts } = useContext(PostsContext);
 
   return (
@@ -19,7 +20,7 @@ export function Posts() {
         {posts ? (
           posts.map((post) => (
             <PostItem key={post.number}>
-              <a href="www.google.com">
+              <Link to={`/${post.number}`} >
                 <header>
                   <h2>{post.title}</h2>
                   <time title={post.created_at}>
@@ -31,7 +32,7 @@ export function Posts() {
                 </header>
 
                 <p>{post.body}</p>
-              </a>
+              </Link>
             </PostItem>
           ))
         ) : (

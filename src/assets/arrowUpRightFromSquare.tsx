@@ -1,6 +1,6 @@
 export function ArrowUpRightFromSquare() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width={12} height={13} fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width={12} height={13} fill="none">
       <g clipPath="url(#a)">
         <path
           fill="currentColor"

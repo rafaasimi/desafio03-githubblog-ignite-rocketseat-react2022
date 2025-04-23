@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-export const ProfileContainer = styled.section`
+export const PostPageContainer = styled.main`
+  position: relative;
+  top: -5.5rem;
+
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+`;
+
+export const CardContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -17,33 +26,24 @@ export const ProfileContainer = styled.section`
   }
 `;
 
-export const ProfileImage = styled.div`
-  max-width: 9.25rem;
-  max-height: 9.25rem;
+export const CardInfo = styled.div`
+  width: 100%;
 
-  overflow: hidden;
-  border-radius: 8px;
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-export const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-export const ProfileHeader = styled.header`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+export const CardHeader = styled.header`
+  & > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 
   h2 {
+    margin-top: 1.25rem;
+
     font-size: 1.5rem;
     line-height: 130%;
     font-weight: bold;
@@ -80,16 +80,7 @@ export const ProfileHeader = styled.header`
   }
 `;
 
-export const ProfileDescription = styled.div`
-  margin-top: 8px;
-
-  p {
-    color: ${(props) => props.theme["base-text"]};
-    line-height: 160%;
-  }
-`;
-
-export const ProfileSocials = styled.div`
+export const CardSocials = styled.div`
   margin-top: 1rem;
   display: flex;
   align-items: center;

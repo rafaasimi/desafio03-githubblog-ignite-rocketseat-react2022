@@ -11,18 +11,22 @@ import { ArrowUpRightFromSquare } from "../../../../assets/arrowUpRightFromSquar
 import { Github } from "../../../../assets/github";
 import { Building } from "../../../../assets/building";
 import { UsersGroup } from "../../../../assets/usersGroup";
+import { PostsContext } from "../../../../contexts/PostsContext";
+import { useContext } from "react";
 
 export function Profile() {
+    const { user } = useContext(PostsContext);
+
   return (
     <ProfileContainer>
       <ProfileImage>
-        <img src="https://github.com/rafaasimi.png" alt="" />
+        <img src={`https://github.com/${user?.login}.png`} alt="" />
       </ProfileImage>
 
       <ProfileInfo>
         <ProfileHeader>
-          <h2>Rafael Simionato</h2>
-          <a href="https://github.com/rafaasimi" target="_blank">
+          <h2>{user?.name}</h2>
+          <a href={`https://github.com/${user?.login}`} target="_blank">
             Github
             <ArrowUpRightFromSquare />
           </a>
@@ -30,24 +34,22 @@ export function Profile() {
 
         <ProfileDescription>
           <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
+            {user?.bio}
           </p>
         </ProfileDescription>
 
         <ProfileSocials>
           <span>
             <Github />
-            rafaasimi
+            {user?.login}
           </span>
           <span>
             <Building />
-            Sicredi
+            {user?.company}
           </span>
           <span>
             <UsersGroup />
-            99 seguidores
+            {user?.followers} seguidores
           </span>
         </ProfileSocials>
       </ProfileInfo>

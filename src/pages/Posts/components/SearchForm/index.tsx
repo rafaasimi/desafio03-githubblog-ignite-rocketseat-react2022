@@ -6,7 +6,11 @@ export function SearchForm() {
   const { posts } = useContext(PostsContext);
 
   function formatPostCount() {
-    const count = posts.length;
+    const count = posts?.length;
+
+    if (!count) {
+      return;
+    }
 
     if (count === 1) {
       return `${count} publicação`;
