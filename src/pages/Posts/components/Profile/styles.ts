@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const ProfileContainer = styled.section`
-  position: relative;
-  top: -5.5rem;
-
   display: flex;
   align-items: center;
   gap: 2rem;
 
   padding: 2rem;
+  margin-bottom: 4.5rem;
+
   background-color: ${(props) => props.theme["base-profile"]};
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
