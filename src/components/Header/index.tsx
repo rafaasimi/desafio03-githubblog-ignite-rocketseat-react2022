@@ -9,7 +9,7 @@ export function Header() {
     <HeaderContainer>
       <img src={headerLeftImg} alt="" />
       <img src={headerRightImg} alt="" />
-      
+
       <HeaderContent>
         <img src={logoImg} alt="" />
       </HeaderContent>

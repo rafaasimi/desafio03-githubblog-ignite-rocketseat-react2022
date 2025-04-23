@@ -20,4 +20,9 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 2px ${(props) => props.theme.blue};
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;

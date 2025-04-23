@@ -1,7 +1,17 @@
+import { ThemeProvider } from "styled-components";
+import { Posts } from "./pages/Posts";
+import { GlobalStyle } from "./styles/global";
+import { Header } from "./components/Header";
+import { defaultTheme } from "./styles/themes/default";
+
 export function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <Header />
+        <Posts />
+      </ThemeProvider>
     </>
   );
 }
