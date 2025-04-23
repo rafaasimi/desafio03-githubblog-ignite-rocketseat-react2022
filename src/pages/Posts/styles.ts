@@ -21,6 +21,7 @@ export const PostList = styled.main`
 
 export const PostItem = styled.article`
   a {
+    height: 100%;
     padding: 2rem;
     border-radius: 10px;
     background: ${(props) => props.theme["base-post"]};
@@ -45,6 +46,12 @@ export const PostItem = styled.article`
         font-size: 1.25rem;
         line-height: 160%;
         color: ${(props) => props.theme["base-title"]};
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       time {

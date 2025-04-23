@@ -1,127 +1,42 @@
+import { useContext } from "react";
 import { Profile } from "./components/Profile";
 import { SearchForm } from "./components/SearchForm";
 import { PostItem, PostList, PostsContainer } from "./styles";
+import { PostsContext } from "../../contexts/PostsContext";
+
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 export function Posts() {
+  const { posts } = useContext(PostsContext);
+
   return (
     <PostsContainer>
       <Profile />
       <SearchForm />
 
       <PostList>
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
+        {posts ? (
+          posts.map((post) => (
+            <PostItem key={post.number}>
+              <a href="www.google.com">
+                <header>
+                  <h2>{post.title}</h2>
+                  <time title={post.created_at}>
+                    {formatDistanceToNow(new Date(post.created_at), {
+                      locale: ptBR,
+                      addSuffix: true,
+                    })}
+                  </time>
+                </header>
 
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
-
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
-
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
-
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
-
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
-
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
-
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
-
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
-
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
-
-        <PostItem>
-          <a href="www.google.com">
-            <header>
-              <h2>JavaScript data types and data structures</h2>
-              <time title="23/04/2025">Há 1 dia</time>
-            </header>
-
-            <p>
-              Programming languages all have built-in data structures, but these
-              often differ from one language to another. This article attempts
-              to list the built-in data structures available in JavaScript and
-              what properties they have. These can be used to build other data
-              structures. Wherever possible, comparisons with other languages
-              are drawn. Dynamic typing JavaScript is a loosely typed and
-              dynamic.
-            </p>
-          </a>
-        </PostItem>
+                <p>{post.body}</p>
+              </a>
+            </PostItem>
+          ))
+        ) : (
+          <p>Não há publicações</p>
+        )}
       </PostList>
     </PostsContainer>
   );

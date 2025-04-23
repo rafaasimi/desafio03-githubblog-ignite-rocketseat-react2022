@@ -1,11 +1,27 @@
+import { useContext } from "react";
+import { PostsContext } from "../../../../contexts/PostsContext";
 import { SearchFormContainer } from "./styles";
 
 export function SearchForm() {
+  const { posts } = useContext(PostsContext);
+
+  function formatPostCount() {
+    const count = posts.length;
+
+    if (count === 1) {
+      return `${count} publicação`;
+    } else if (count > 1) {
+      return `${count} publicações`;
+    } else {
+      return "não há publicações";
+    }
+  }
+
   return (
     <SearchFormContainer>
       <div>
         <strong>Publicações</strong>
-        <span>6 publicações</span>
+        <span>{formatPostCount()}</span>
       </div>
 
       <form>
