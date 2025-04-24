@@ -28,7 +28,7 @@ export function SearchForm() {
         <span>{formatPostCount()}</span>
       </div>
 
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input type="text" placeholder="Buscar conteúdo" />
       </form>
     </SearchFormContainer>
