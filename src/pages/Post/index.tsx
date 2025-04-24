@@ -49,8 +49,8 @@ export function PostPage() {
               <Link to="/">
                 <ChevronLeft /> Voltar
               </Link>
-              <a href="https://github.com/rafaasimi" target="_blank">
-                Github
+              <a href={currentPost?.html_url} target="_blank">
+                Ver no Github
                 <ArrowUpRightFromSquare />
               </a>
             </div>

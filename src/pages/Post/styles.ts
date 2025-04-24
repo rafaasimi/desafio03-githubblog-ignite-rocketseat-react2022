@@ -128,5 +128,6 @@ export const PostContent = styled.div`
     padding: 1rem;
     border-radius: .5rem;
     background-color: ${(props) => props.theme["base-input"]};
+    overflow-x: auto;
   }
 `
