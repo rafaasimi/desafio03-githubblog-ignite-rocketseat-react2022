@@ -15,7 +15,6 @@ export const CardContainer = styled.div`
   gap: 2rem;
 
   padding: 2rem;
-  margin-bottom: 4.5rem;
 
   background-color: ${(props) => props.theme["base-profile"]};
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
@@ -104,3 +103,30 @@ export const CardSocials = styled.div`
     justify-content: center;
   }
 `;
+
+export const PostContent = styled.div`
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  p {
+    line-height: 160%;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    margin-top: 2rem;
+  }
+
+  a {
+    color: ${(props) => props.theme.blue};
+    text-decoration: underline;
+  }
+
+  pre {
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: ${(props) => props.theme["base-input"]};
+  }
+`

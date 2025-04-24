@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardInfo,
   CardSocials,
+  PostContent,
   PostPageContainer,
 } from "./styles";
 import { ArrowUpRightFromSquare } from "../../assets/arrowUpRightFromSquare";
@@ -15,6 +16,9 @@ import { Calendar } from "../../assets/calendarDay";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { ChevronLeft } from "../../assets/chevronLeft";
+
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export function PostPage() {
   const { fetchPostById, posts } = useContext(PostsContext);
@@ -61,10 +65,11 @@ export function PostPage() {
             </span>
             <span>
               <Calendar />
-              {currentPost && formatDistanceToNow(new Date(currentPost?.created_at), {
-                locale: ptBR,
-                addSuffix: true,
-              })}
+              {currentPost &&
+                formatDistanceToNow(new Date(currentPost?.created_at), {
+                  locale: ptBR,
+                  addSuffix: true,
+                })}
             </span>
             <span>
               <Comment />
@@ -73,6 +78,10 @@ export function PostPage() {
           </CardSocials>
         </CardInfo>
       </CardContainer>
+
+      <PostContent>
+        <Markdown remarkPlugins={[remarkGfm]}>{currentPost?.body}</Markdown>
+      </PostContent>
     </PostPageContainer>
   );
 }

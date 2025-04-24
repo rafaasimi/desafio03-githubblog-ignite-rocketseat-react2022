@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { Profile } from "./components/Profile";
 import { SearchForm } from "./components/SearchForm";
-import { PostItem, PostList, PostsContainer } from "./styles";
+import { PostContent, PostItem, PostList, PostsContainer } from "./styles";
 import { PostsContext } from "../../contexts/PostsContext";
 
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Link } from "react-router";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export function PostsPage() {
   const { posts } = useContext(PostsContext);
@@ -20,7 +22,7 @@ export function PostsPage() {
         {posts ? (
           posts.map((post) => (
             <PostItem key={post.number}>
-              <Link to={`/${post.number}`} >
+              <Link to={`/${post.number}`}>
                 <header>
                   <h2>{post.title}</h2>
                   <time title={post.created_at}>
@@ -31,7 +33,15 @@ export function PostsPage() {
                   </time>
                 </header>
 
-                <p>{post.body}</p>
+                <PostContent>
+                    <Markdown
+                      remarkPlugins={[remarkGfm]}
+                      allowedElements ={["p"]}
+                      unwrapDisallowed
+                    >
+                      {post.body}
+                    </Markdown>
+                </PostContent>
               </Link>
             </PostItem>
           ))
